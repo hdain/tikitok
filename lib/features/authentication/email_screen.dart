@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tikitok/constants/gaps.dart';
 import 'package:tikitok/constants/sizes.dart';
 import 'package:tikitok/features/authentication/password_screen.dart';
-import 'package:tikitok/widgets/form_button.dart';
+import 'package:tikitok/features/authentication/widgets/form_button.dart';
 
 class EmailScreen extends StatefulWidget {
   const EmailScreen({super.key});

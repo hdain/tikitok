@@ -4,7 +4,7 @@ import 'package:tikitok/constants/gaps.dart';
 import 'package:tikitok/constants/sizes.dart';
 import 'package:tikitok/features/authentication/login_screen.dart';
 import 'package:tikitok/features/authentication/username_screen.dart';
-import 'package:tikitok/widgets/auth_button.dart';
+import 'package:tikitok/features/authentication/widgets/auth_button.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tikitok/constants/gaps.dart';
 import 'package:tikitok/constants/sizes.dart';
 import 'package:tikitok/features/onboarding/tutorial_screen.dart';
-import 'package:tikitok/widgets/interest_button.dart';
+import 'package:tikitok/features/onboarding/widgets/interest_button.dart';
 
 const interests = [
   "Daily Life",
