@@ -15,6 +15,9 @@ class TikiTokApp extends StatelessWidget {
       title: 'Tikitok',
       theme: ThemeData(
         primaryColor: const Color(0xFFE9435A),
+        textSelectionTheme: const TextSelectionThemeData(
+          cursorColor: Color(0xFFE9435A),
+        ),
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
           foregroundColor: Colors.black,
