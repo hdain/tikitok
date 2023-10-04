@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:tikitok/constants/gaps.dart';
 import 'package:tikitok/constants/sizes.dart';
+import 'package:tikitok/utils.dart';
 
 class ChatDetailScreen extends StatefulWidget {
   const ChatDetailScreen({super.key});
@@ -15,32 +16,32 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const ListTile(
+        title: ListTile(
           contentPadding: EdgeInsets.zero,
           horizontalTitleGap: Sizes.size8,
-          leading: CircleAvatar(
+          leading: const CircleAvatar(
             radius: Sizes.size24,
             foregroundImage: NetworkImage(
                 'https://avatars.githubusercontent.com/u/85476608'),
             child: Text('Dani'),
           ),
-          title: Text(
+          title: const Text(
             'Dani',
             style: TextStyle(fontWeight: FontWeight.w600),
           ),
-          subtitle: Text('Active now'),
+          subtitle: const Text('Active now'),
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               FaIcon(
                 FontAwesomeIcons.flag,
-                color: Colors.black,
+                color: Theme.of(context).iconTheme.color,
                 size: Sizes.size20,
               ),
               Gaps.h32,
               FaIcon(
                 FontAwesomeIcons.ellipsis,
-                color: Colors.black,
+                color: Theme.of(context).iconTheme.color,
                 size: Sizes.size20,
               ),
             ],
@@ -94,6 +95,22 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
             },
             separatorBuilder: (context, index) => Gaps.v10,
             itemCount: 10,
+          ),
+          Positioned(
+            bottom: 0,
+            width: MediaQuery.of(context).size.width,
+            child: Container(
+              color: isDarkMode(context) ? Colors.black : Colors.grey.shade50,
+              child: const Row(
+                children: [
+                  Expanded(
+                    child: TextField(),
+                  ),
+                  Gaps.h20,
+                  FaIcon(FontAwesomeIcons.paperPlane),
+                ],
+              ),
+            ),
           ),
         ],
       ),

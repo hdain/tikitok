@@ -5,6 +5,7 @@ import 'package:tikitok/constants/sizes.dart';
 import 'package:tikitok/features/authentication/login_screen.dart';
 import 'package:tikitok/features/authentication/username_screen.dart';
 import 'package:tikitok/features/authentication/widgets/auth_button.dart';
+import 'package:tikitok/utils.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -42,6 +43,7 @@ class SignUpScreen extends StatelessWidget {
               horizontal: Sizes.size40,
             ),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Gaps.v80,
                 const Text(
@@ -52,35 +54,64 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
                 Gaps.v20,
-                const Text(
-                  'Create a profile, follow other accounts, make your own videos, and more.',
-                  style:
-                      TextStyle(fontSize: Sizes.size16, color: Colors.black45),
-                  textAlign: TextAlign.center,
-                ),
-                Gaps.v40,
-                GestureDetector(
-                  onTap: () => _onEmailTap(context),
-                  child: const AuthButton(
-                    icon: FaIcon(FontAwesomeIcons.user),
-                    text: "Use email & password",
+                const Opacity(
+                  opacity: 0.7,
+                  child: Text(
+                    'Create a profile, follow other accounts, make your own videos, and more.',
+                    style: TextStyle(
+                      fontSize: Sizes.size16,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-                Gaps.v16,
-                const AuthButton(
-                  icon: FaIcon(FontAwesomeIcons.apple),
-                  text: "Continue with Apple",
-                ),
+                Gaps.v40,
+                if (orientation == Orientation.portrait) ...[
+                  GestureDetector(
+                    onTap: () => _onEmailTap(context),
+                    child: const AuthButton(
+                      icon: FaIcon(FontAwesomeIcons.user),
+                      text: "Use email & password",
+                    ),
+                  ),
+                  Gaps.v16,
+                  const AuthButton(
+                    icon: FaIcon(FontAwesomeIcons.apple),
+                    text: "Continue with Apple",
+                  ),
+                ],
+                if (orientation == Orientation.landscape)
+                  Row(
+                    children: [
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () => _onEmailTap(context),
+                          child: const AuthButton(
+                            icon: FaIcon(FontAwesomeIcons.user),
+                            text: "Use email & password",
+                          ),
+                        ),
+                      ),
+                      Gaps.h16,
+                      const Expanded(
+                        child: AuthButton(
+                          icon: FaIcon(FontAwesomeIcons.apple),
+                          text: "Continue with Apple",
+                        ),
+                      ),
+                    ],
+                  )
               ],
             ),
           ),
         ),
-        bottomNavigationBar: BottomAppBar(
-          color: Colors.grey.shade50,
-          elevation: 2,
+        bottomNavigationBar: Container(
+          color: isDarkMode(context)
+              ? Theme.of(context).appBarTheme.backgroundColor
+              : Colors.grey.shade50,
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: Sizes.size32,
+            padding: const EdgeInsets.only(
+              top: Sizes.size32,
+              bottom: Sizes.size64,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
