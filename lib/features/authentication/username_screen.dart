@@ -5,6 +5,7 @@ import 'package:tikitok/features/authentication/email_screen.dart';
 import 'package:tikitok/features/authentication/widgets/form_button.dart';
 
 class UsernameScreen extends StatefulWidget {
+  static String routeName = '/username';
   const UsernameScreen({super.key});
 
   @override
@@ -34,11 +35,10 @@ class _UsernameScreenState extends State<UsernameScreen> {
 
   void _onNextTap() {
     if (_username.isEmpty) return;
-    Navigator.push(
+    Navigator.pushNamed(
       context,
-      MaterialPageRoute(
-        builder: (context) => const EmailScreen(),
-      ),
+      EmailScreen.routeName,
+      arguments: EmailScreenArgs(username: _username),
     );
   }
 

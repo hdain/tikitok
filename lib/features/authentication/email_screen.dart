@@ -4,7 +4,14 @@ import 'package:tikitok/constants/sizes.dart';
 import 'package:tikitok/features/authentication/password_screen.dart';
 import 'package:tikitok/features/authentication/widgets/form_button.dart';
 
+class EmailScreenArgs {
+  final String username;
+
+  EmailScreenArgs({required this.username});
+}
+
 class EmailScreen extends StatefulWidget {
+  static String routeName = '/email';
   const EmailScreen({super.key});
 
   @override
@@ -58,6 +65,7 @@ class _EmailScreenState extends State<EmailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as EmailScreenArgs;
     return GestureDetector(
       onTap: _onScaffoldTap,
       child: Scaffold(
@@ -74,9 +82,9 @@ class _EmailScreenState extends State<EmailScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Gaps.v40,
-              const Text(
-                'What is your email?',
-                style: TextStyle(
+              Text(
+                'What is your email, ${args.username}?',
+                style: const TextStyle(
                   fontSize: Sizes.size24,
                   fontWeight: FontWeight.w700,
                 ),

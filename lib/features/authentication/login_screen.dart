@@ -7,10 +7,11 @@ import 'package:tikitok/features/authentication/widgets/auth_button.dart';
 import 'package:tikitok/utils.dart';
 
 class LoginScreen extends StatelessWidget {
+  static String routeName = '/login';
   const LoginScreen({super.key});
 
   void _onSignUpTap(BuildContext context) {
-    Navigator.of(context).pop();
+    Navigator.of(context).pop('Hello!');
   }
 
   void _onEmailLoginTap(BuildContext context) {

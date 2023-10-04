@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tikitok/constants/sizes.dart';
+import 'package:tikitok/features/authentication/email_screen.dart';
+import 'package:tikitok/features/authentication/login_screen.dart';
 import 'package:tikitok/features/authentication/sign_up_screen.dart';
+import 'package:tikitok/features/authentication/username_screen.dart';
 import 'package:tikitok/generated/l10n.dart';
 
 void main() async {
@@ -101,7 +104,13 @@ class TikiTokApp extends StatelessWidget {
         ),
         primaryColor: const Color(0xFFE9435A),
       ),
-      home: const SignUpScreen(),
+      initialRoute: SignUpScreen.routeName,
+      routes: {
+        SignUpScreen.routeName: (context) => const SignUpScreen(),
+        UsernameScreen.routeName: (context) => const UsernameScreen(),
+        LoginScreen.routeName: (context) => const LoginScreen(),
+        EmailScreen.routeName: (context) => const EmailScreen(),
+      },
     );
   }
 }
