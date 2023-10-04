@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -12,7 +13,7 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   bool _notifications = false;
 
-  void _onNotificationsChanged(bool newValue) {
+  void _onNotificationsChanged(bool? newValue) {
     if (newValue == null) return;
     setState(() {
       _notifications = newValue;
@@ -27,13 +28,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       body: ListView(
         children: [
-          SwitchListTile(
+          SwitchListTile.adaptive(
             value: _notifications,
             onChanged: _onNotificationsChanged,
             title: const Text('Enable notifications'),
             subtitle: const Text('They will be cute'),
           ),
-          SwitchListTile(
+          CheckboxListTile(
             activeColor: Colors.black,
             value: _notifications,
             onChanged: _onNotificationsChanged,
@@ -48,12 +49,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 firstDate: DateTime(1980),
                 lastDate: DateTime(2030),
               );
-              print(date);
+              if (kDebugMode) {
+                print(date);
+              }
+              if (!mounted) return;
               final time = await showTimePicker(
                 context: context,
                 initialTime: TimeOfDay.now(),
               );
-              print(time);
+              if (kDebugMode) {
+                print(time);
+              }
+              if (!mounted) return;
+
               final booking = await showDateRangePicker(
                 context: context,
                 firstDate: DateTime(1980),
@@ -70,6 +78,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   );
                 },
               );
+              if (kDebugMode) {
+                print(booking);
+              }
             },
             title: const Text('What is your birthday?'),
             subtitle: const Text('I need to know!'),

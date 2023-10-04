@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tikitok/constants/sizes.dart';
 import 'package:tikitok/features/authentication/sign_up_screen.dart';
+import 'package:tikitok/generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,9 +22,20 @@ class TikiTokApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // S.load(const Locale('en'));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Tikitok',
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ko'),
+      ],
       themeMode: ThemeMode.system,
       theme: ThemeData(
         useMaterial3: true,
