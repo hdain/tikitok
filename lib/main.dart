@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tikitok/constants/sizes.dart';
-import 'package:tikitok/features/authentication/email_screen.dart';
-import 'package:tikitok/features/authentication/login_screen.dart';
-import 'package:tikitok/features/authentication/sign_up_screen.dart';
-import 'package:tikitok/features/authentication/username_screen.dart';
 import 'package:tikitok/generated/l10n.dart';
+import 'package:tikitok/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +23,8 @@ class TikiTokApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // S.load(const Locale('en'));
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
       debugShowCheckedModeBanner: false,
       title: 'Tikitok',
       localizationsDelegates: const [
@@ -104,13 +102,6 @@ class TikiTokApp extends StatelessWidget {
         ),
         primaryColor: const Color(0xFFE9435A),
       ),
-      initialRoute: SignUpScreen.routeName,
-      routes: {
-        SignUpScreen.routeName: (context) => const SignUpScreen(),
-        UsernameScreen.routeName: (context) => const UsernameScreen(),
-        LoginScreen.routeName: (context) => const LoginScreen(),
-        EmailScreen.routeName: (context) => const EmailScreen(),
-      },
     );
   }
 }
