@@ -5,7 +5,15 @@ import 'package:tikitok/constants/sizes.dart';
 import 'package:tikitok/utils.dart';
 
 class ChatDetailScreen extends StatefulWidget {
-  const ChatDetailScreen({super.key});
+  static const String routeName = 'chatDetail';
+  static const String routeURL = ':chatId';
+
+  final String chatId;
+
+  const ChatDetailScreen({
+    super.key,
+    required this.chatId,
+  });
 
   @override
   State<ChatDetailScreen> createState() => _ChatDetailScreenState();
@@ -25,9 +33,9 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                 'https://avatars.githubusercontent.com/u/85476608'),
             child: Text('Dani'),
           ),
-          title: const Text(
-            'Dani',
-            style: TextStyle(fontWeight: FontWeight.w600),
+          title: Text(
+            'Dani (${widget.chatId}',
+            style: const TextStyle(fontWeight: FontWeight.w600),
           ),
           subtitle: const Text('Active now'),
           trailing: Row(
