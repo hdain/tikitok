@@ -26,7 +26,7 @@ class TikiTokApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: router,
       debugShowCheckedModeBanner: false,
-      title: 'Tikitok',
+      title: 'TikiTok',
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
