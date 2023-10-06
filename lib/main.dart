@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -6,11 +7,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tikitok/constants/sizes.dart';
 import 'package:tikitok/features/videos/repos/playback_config_repo.dart';
 import 'package:tikitok/features/videos/view_models/playback_config_vm.dart';
+import 'package:tikitok/firebase_options.dart';
 import 'package:tikitok/generated/l10n.dart';
 import 'package:tikitok/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   await SystemChrome.setPreferredOrientations(
     [
@@ -33,14 +39,14 @@ void main() async {
   );
 }
 
-class TikiTokApp extends StatelessWidget {
+class TikiTokApp extends ConsumerWidget {
   const TikiTokApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // S.load(const Locale('en'));
     return MaterialApp.router(
-      routerConfig: router,
+      routerConfig: ref.watch(routerProvider),
       debugShowCheckedModeBanner: false,
       title: 'TikiTok',
       localizationsDelegates: const [

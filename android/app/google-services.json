@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "888830541138",
+    "project_id": "tikitok-bbc98",
+    "storage_bucket": "tikitok-bbc98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888830541138:android:9a957a8a3f3bf45b2ece8b",
+        "android_client_info": {
+          "package_name": "com.example.tikitok"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSepWKXU54xCKmJ_igxdYAFUl71p7Rmqk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
