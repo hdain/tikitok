@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tikitok/common/widgets/video_config/video_config.dart';
 import 'package:tikitok/constants/sizes.dart';
+import 'package:tikitok/features/videos/repos/playback_config_repo.dart';
+import 'package:tikitok/features/videos/view_models/playback_config_vm.dart';
 import 'package:tikitok/generated/l10n.dart';
 import 'package:tikitok/router.dart';
 
@@ -16,7 +19,19 @@ void main() async {
     ],
   );
 
-  runApp(const TikiTokApp());
+  final preferences = await SharedPreferences.getInstance();
+  final repository = PlaybackConfigRepository(preferences);
+
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => PlaybackConfigViewModel(repository),
+        )
+      ],
+      child: const TikiTokApp(),
+    ),
+  );
 }
 
 class TikiTokApp extends StatelessWidget {

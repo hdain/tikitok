@@ -7,8 +7,8 @@ import 'package:tikitok/constants/gaps.dart';
 import 'package:tikitok/features/discover/discover_screen.dart';
 import 'package:tikitok/features/inbox/inbox_screen.dart';
 import 'package:tikitok/features/users/user_profile_screen.dart';
-import 'package:tikitok/features/videos/video_recording_screen.dart';
-import 'package:tikitok/features/videos/video_timeline_screen.dart';
+import 'package:tikitok/features/videos/views/video_recording_screen.dart';
+import 'package:tikitok/features/videos/views/video_timeline_screen.dart';
 import 'package:tikitok/utils.dart';
 
 class MainNavigationScreen extends StatefulWidget {
